@@ -1,8 +1,12 @@
-from shapes import Shape, Triangle
+from shapes import Shape, Triangle, Square
 
-t = Triangle(3, 5)
-print(t.get_sides())
-print(t.get_area())
-sl = [3, 4, 5]
-t.set_side_lengths(sl)
-print(t.get_perimeter())
+t = Triangle(500, 500)
+s = Square()
+square_sides = [5, 5, 5, 5]
+s.set_side_lengths(square_sides)
+print(f'Square area: {s.get_area()}')
+
+if s > t:
+    print('Square is greater')
+else:
+    print('Triangle is greater')

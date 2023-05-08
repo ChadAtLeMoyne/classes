@@ -34,6 +34,12 @@ class Shape():
     def get_area(self):
         return None
 
+    def __eq__(self, other) -> bool:
+        return self.get_area() == other.get_area()
+
+    def __gt__(self, other) -> bool:
+        return self.get_area() > other.get_area()
+
 class Triangle(Shape):
     def __init__(self, height, width) -> None:
         super().__init__(3)
@@ -56,3 +62,25 @@ class Triangle(Shape):
         if sides != 3:
             raise ValueError(f'Triangles have 3 sides')
         super().set_sides(sides)
+
+class Square(Shape):
+    def __init__(self) -> None:
+        super().__init__(4)
+    
+    def get_area(self):
+        return self.side_lengths[0] ** 2
+    
+    def set_sides(self, sides) -> None:
+        if sides != 4:
+            raise ValueError(f'Squares have 4 sides')
+        return super().set_sides(sides)
+
+    def set_side_lengths(self, side_lengths) -> None:
+        for i in range(len(side_lengths)):
+            if i == 0:
+                previous = side_lengths[0]
+            else:
+                if side_lengths[i] != previous:
+                    raise ValueError('Sqaures have equal sides')
+
+        return super().set_side_lengths(side_lengths)
